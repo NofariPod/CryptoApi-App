@@ -1,55 +1,21 @@
-let cache = [];
-
 //get more info
 async function getMoreInfo(event) {
-  //setTimeout(getMoreInfo, 120000)
   let coinDataId = `${event.target.id}`;
   let url = URL_2 + `${coinDataId}`;
   const res1 = await fetch(url);
-  $(".loader").show();
-  const coinsIds = await res1.json();
-  //const cache = await caches.open("my-cache");
-  //const cachePut = await cache.put(url, res1);
-  displayMoreInfo(coinsIds, coinDataId);
-  /** 
-  .then(function (data) {
-    console.log(data);
-    caches.open("my-cache").then(function (cache) {
-      cache
-        .put(url, coinsIds)
-        .then($(".loader").hide(), displayMoreInfo(data, coinDataId));
+  const copyRes1 = res1.clone();
+  const coinsIds = await res1.json().then(function (data) {
+    //console.log(data); //coin data
+    caches.open("my-cache").then(async function (cache) {
+      //console.log(coinsIds);
+      //const cacheMemory = await caches.open("my-cache");
+      const cachePut = await cache.put(url, copyRes1);
+      $(".loader").hide();
+      displayMoreInfo(data, coinDataId);
     });
   });
-
-  //addUrlToCache(URL_2 + `${coinDataId}`);
-  //const res1 = await fetch(URL_2 + `${coinDataId}`);
-
-  //const coinsIds = await res1.json();
-  /**if ("caches" in window) {
-    caches.open("my-cache").then((cache) => {
-      const options = {
-        cache: coinsIds,
-      };
-      console.log(options);
-      cache.add(new Request("/resource", options));
-    });
-  }**/
-  $(".loader").hide();
-  //displayMoreInfo(coinsIds, coinDataId);
+  $(".loader").show();
 }
-
-/**function addUrlToCache(url) {
-  window
-    .fetch(url)
-    .then(function (response) {
-      caches.open("my-cache").then(function (cache) {
-        cache.put(url, response).then(displayMoreInfo(response.json()));
-      });
-    })
-    .catch(function (error) {
-      ChromeSamples.setStatus(error);
-    });
-}**/
 
 //display html more info
 function displayMoreInfo(coin) {

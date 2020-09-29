@@ -61,7 +61,7 @@ $(".nav-link").on("click", (event) => {
 inputSearch.addEventListener("keyup", (e) => {
   let searchStr = e.target.value.toLowerCase();
   const filteredC = filteredCoin.filter((coin) => {
-    return coin.name.toLowerCase().includes(searchStr);
+    return coin.symbol.toLowerCase().includes(searchStr);
   });
   console.log(filteredC);
   displayCoins(filteredC);
