@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crypto API</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="/CSS/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.4.6/tailwind.min.css"
+    />
+
+    <header class="text-gray-700 body-font">
+      <div
+        class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
+      >
+        <a
+          class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            class="w-10 h-10 text-white p-2 bg-pink-500 rounded-full"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+            ></path>
+          </svg>
+          <span class="ml-3 text-xl">Crypto API</span>
+        </a>
+        <div
+          class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400 flex flex-wrap items-center text-base justify-center"
+        >
+          <a class="nav-link mr-4" id="home" href="#">Home</a>
+          <a class="nav-link mr-4" id="liveData" href="#">Live Reports</a>
+          <a class="nav-link mr-4" id="about" href="#">About</a>
+        </div>
+        <div class="search">
+          <div class="search-field">
+            <input
+              class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0"
+              type="text"
+              placeholder="Search a coin .."
+              id="inputSearch"
+            />
+          </div>
+        </div>
+      </div>
+    </header>
+  </head>
+  <body onload="loadCoins()">
+    <h6 id="appTitle">Crypto Api App</h6>
+    <div class="parallax">
+      <div class="loader"></div>
+    </div>
+    <div class="coinsCards"></div>
+    <div id="myModal" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" id="modaldialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">You selected one too many coins.</h5>
+          </div>
+          <div class="modal-body" id="modalbody">
+            <p id="modalbody">
+              To add this coin, you must unselect one of the following:
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn modalbtn"
+              id="keepcurrent"
+              data-dismiss="modal"
+            >
+              Return Back
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/JS/scripts.js"></script>
+    <script src="/JS/moreInfoJs.js"></script>
+    <script src="/JS/switchToggle.js"></script>
+  </body>
+</html>
